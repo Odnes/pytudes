@@ -16,12 +16,11 @@ log.basicConfig(
 
 # Sums all multiples of a set of numbers (union or intersection) below
 # a defined threshold.
-# TODO Active:
-# See if join works for inverting the divisor and divided or whether I'll need
-# a loop
 
-# TODO Backlog: investigate why eval(expression) evaluates the way it does when
+# Backlog:
+# TODO investigate why eval(expression) evaluates the way it does when
 # using binary logic operators
+# TODO alternative implementation with meta-programming
 def calculate_multiples(factors: set, threshold: int, logic_op: str):
     # convert all set elements into string to enable concatenation
     #   XXX for factor in factors: # factor is value, not address
@@ -58,3 +57,20 @@ def calculate_multiples(factors: set, threshold: int, logic_op: str):
               f"with {logic_op} " +
               f"operation: {str(multiples)}")
     return multiples
+
+
+def calculate_fibonacci(threshold: int):
+    sequence: list = [1, 2]
+    while sequence[-1] < threshold:
+        next = sequence[-1] + sequence[-2]
+        sequence.append(next)
+    log.debug(f"Sequence is {str(sequence)}")
+    return sequence
+
+
+def find_even(array: list):
+    even: list = []
+    for array_item in array:
+        if array_item % 2 == 0:
+            even.append(array_item)
+    return even
